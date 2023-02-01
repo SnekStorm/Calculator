@@ -5,13 +5,33 @@ using namespace std;
 
 
 
+
+
+void int_to_string(string temp)
+{
+	int num;
+	try
+	{
+		num = stoi(temp);
+		memory.numberArray[memory.index] = num;
+		cout << "Conversion: " << num << " Store: "<< memory.numberArray[memory.index] << endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "ERROR: "<< e.what() << '\n';
+		memory.index--;
+	}
+	
+}
+
 void indexNumbers()
 {
-string temp;
+	string temp;
 	for (int j = 0; j < (memory.end_index-memory.start_index); j++)
 	{    
-		 memory.numberArray[memory.index] += memory.input[memory.start_index+j];
+		temp += memory.input[memory.start_index+j];
 	}
+	int_to_string(temp);
 }
 
 int main()
@@ -36,6 +56,7 @@ int main()
     //cout << "both: "<< (end_index-start_index) << "  index: " << index << endl;
     indexNumbers();
 
+	
 
     cout << "Input: " << memory.input << endl;
 
@@ -44,5 +65,6 @@ int main()
         cout << "Output array: "<< memory.numberArray[i] << endl;
     }
 
-    return 0;
+	
+	return 0;
 }
