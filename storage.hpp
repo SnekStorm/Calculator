@@ -15,6 +15,8 @@ struct
    int start_index = 0;
    int end_index = 0;   
    int index = 0;
+   int total = 0;
+   int lastSign;
 
 }memory;
    
@@ -23,6 +25,7 @@ struct
 void indexNumbers();
 void int_to_string(string temp);
 bool nonInt(int temp);
+void sign();
 
 
 #endif

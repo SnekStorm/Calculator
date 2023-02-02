@@ -26,40 +26,69 @@ bool nonInt(int temp)
 
 }
 
+void sign()
+{
+	switch (memory.lastSign)
+		{
+		case '+':
+			memory.total = (memory.total + memory.numberArray[memory.index]); 
+			cout << "kolla: " << memory.total << endl;
+			break;
+		case '-':
+			memory.total = (memory.total - memory.numberArray[memory.index]); 
+			cout << "kolla: " << memory.total << endl;
+			break;
+		case '*':
+			memory.total = (memory.total * memory.numberArray[memory.index]); 
+			cout << "kolla: " << memory.total << endl;
+			break;
+		case '/':
+			memory.total = (memory.total / memory.numberArray[memory.index]); 
+			cout << "kolla: " << memory.total << endl;
+			break;
+		
+		default:
+			memory.total = memory.numberArray[memory.index];
+			cout << "kolla: " << memory.total << endl;
+			break;
+		}
+
+}
+
 int main()
 {
     cout << "Enter formula: ";
     cin >> memory.input;
-	//cout << endl;
 
     for (int i = 0; i < size(memory.input)+1; i++)
     {
-        memory.end_index = i;  
-        if (memory.input[i] == '+')
+		memory.end_index = i; 
+		        
+        if (memory.input[i] == '+' || memory.input[i] == '-' || memory.input[i] == '*' || memory.input[i] == '/' || (int)memory.input[i] == 0)
         {
             indexNumbers();
-            //cout << "START: "<< start_index << "  END: " << end_index << endl;
+            
+			sign();
+
+			//cout << "START: "<< start_index << "  END: " << end_index << endl;
             memory.start_index = memory.end_index+1;
             memory.index++;
-        }
-
-		// temp_c = memory.input[i];
-		
-		// num += (int) temp_c - 48;
-		
-		//cout << "Num: " << num << "TEMP_C: " << temp_c << endl;
-		
-		
-        
+			memory.lastSign = memory.input[i];
+        }  
+		cout << "I: " << i << " II: " << (int)memory.input[i] << endl;  
     }
-    indexNumbers();
+    //indexNumbers();
+	//sign();
 
-
-    cout << "Input: " << memory.input << endl;
+    
+	
+	cout << "Input: " << memory.input << endl;
     for (int i = 0; i < memory.index+1; i++)
     {
         cout << "Output array: "<< memory.numberArray[i] << endl;
     }
 	
+	cout << "Total: " << memory.total << endl;
+
 	return 0;
 }
