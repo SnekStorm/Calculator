@@ -1,41 +1,36 @@
 #include "storage.hpp"
 using namespace std;
 
-// Convert String to Int value
-void int_to_string(string temp)
-{
-	int num;
-	try
-	{
-		num = stoi(temp);
-		memory.numberArray[memory.index] = num;
-		//cout << "Conversion: " << num << " Store: "<< memory.numberArray[memory.index] << endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << "ERROR: "<< e.what() << '\n';
-		memory.index--;
-	}
-	
-}
 
 // Index the input, between the seperators
 void indexNumbers()
 {
-	string temp;
 	for (int j = 0; j < (memory.end_index-memory.start_index); j++)
 	{    
-		temp += memory.input[memory.start_index+j];
+		if(nonInt((int)memory.input[memory.start_index+j] - '0'))
+			break;
+		
+		memory.numberArray[memory.index] += ((int)memory.input[memory.start_index+j] - '0')*(pow(10,((memory.end_index-memory.start_index)-(j+1))));
 	}
-	int_to_string(temp);
 }
 
+// Finds none Ints, if found delete that segment
+bool nonInt(int temp)
+{
+	//cout << temp << endl;
+	if(temp >= 0 && temp <= 9)
+		return false;
+	cout << "NONE INT FOUND" << endl;
+	memory.numberArray[memory.index--] = 0;
+	return true;
+
+}
 
 int main()
 {
     cout << "Enter formula: ";
     cin >> memory.input;
-	cout << endl;
+	//cout << endl;
 
     for (int i = 0; i < size(memory.input)+1; i++)
     {
@@ -47,6 +42,14 @@ int main()
             memory.start_index = memory.end_index+1;
             memory.index++;
         }
+
+		// temp_c = memory.input[i];
+		
+		// num += (int) temp_c - 48;
+		
+		//cout << "Num: " << num << "TEMP_C: " << temp_c << endl;
+		
+		
         
     }
     indexNumbers();

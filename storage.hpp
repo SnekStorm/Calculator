@@ -4,6 +4,7 @@
 // Includes
 #include <iostream>
 #include <string>
+#include <cmath>
 using namespace std;
 
 // Structs
@@ -21,6 +22,7 @@ struct
 // Tasks
 void indexNumbers();
 void int_to_string(string temp);
+bool nonInt(int temp);
 
 
 #endif
