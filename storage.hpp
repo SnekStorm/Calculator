@@ -13,8 +13,8 @@ struct
    string input;
    int numberArray = 0;
    int start_index = 0;
-   int end_index = 0;   
-   int total = 0;
+   int end_index;   
+   double total = 0;
    int lastSign;
 
 }memory;
@@ -22,7 +22,6 @@ struct
 
 // Tasks
 void indexNumbers();
-void int_to_string(string temp);
 bool nonInt(int temp);
 void sign();
 void reset();

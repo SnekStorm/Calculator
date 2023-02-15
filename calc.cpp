@@ -1,11 +1,12 @@
 #include "storage.hpp"
 using namespace std;
+
+
 void reset()
 {
 	memory.total = 0;
 	memory.start_index = 0;
-	memory.end_index = 0;
-	memory.input = "";
+	//memory.input = "";
 	memory.lastSign = 0;
 }
 
@@ -38,27 +39,42 @@ void sign()
 		{
 		case '+':
 			memory.total = (memory.total + memory.numberArray); 
-			cout << "kolla: " << memory.total << endl;
+			//cout << "kolla: " << memory.total << endl;
 			break;
 		case '-':
 			memory.total = (memory.total - memory.numberArray); 
-			cout << "kolla: " << memory.total << endl;
+			//cout << "kolla: " << memory.total << endl;
 			break;
 		case '*':
 			memory.total = (memory.total * memory.numberArray); 
-			cout << "kolla: " << memory.total << endl;
+			//cout << "kolla: " << memory.total << endl;
 			break;
 		case '/':
 			memory.total = (memory.total / memory.numberArray); 
-			cout << "kolla: " << memory.total << endl;
+			//cout << "kolla: " << memory.total << endl;
 			break;
 		
 		default:
 			memory.total = memory.numberArray;
-			cout << "kolla: " << memory.total << endl;
+			//cout << "kolla: " << memory.total << endl;
 			break;
 		}
 
+}
+
+void decypher()
+{
+	for ( memory.end_index = 0; memory.end_index < size(memory.input)+1; memory.end_index++)
+	{					
+		if (memory.input[memory.end_index] == '+' || memory.input[memory.end_index] == '-' || memory.input[memory.end_index] == '*' || memory.input[memory.end_index] == '/' || (int)memory.input[memory.end_index] == 0)
+		{
+			indexNumbers();
+			sign();
+			
+			memory.start_index = memory.end_index+1;
+			memory.lastSign = memory.input[memory.end_index];
+		}  
+	}
 }
 
 int main()
@@ -69,27 +85,7 @@ int main()
 		cin >> memory.input;
 
 		if(memory.input == "exit") {break;}
-
-		for (int i = 0; i < size(memory.input)+1; i++)
-		{
-			memory.end_index = i; 
-					
-			if (memory.input[i] == '+' || memory.input[i] == '-' || memory.input[i] == '*' || memory.input[i] == '/' || (int)memory.input[i] == 0)
-			{
-				indexNumbers();
-				
-				sign();
-
-				
-				memory.start_index = memory.end_index+1;
-				
-				memory.lastSign = memory.input[i];
-			}  
-			//cout << "I: " << i << " II: " << (int)memory.input[i] << endl;  
-		}
-	
-		
-		cout << "Input: " << memory.input << endl;
+		decypher();
 		
 		cout << "Total: " << memory.total << endl;
 		reset();
