@@ -13,13 +13,13 @@ void reset()
 // Index the input, between the seperators
 void indexNumbers()
 {
-	memory.numberArray[memory.index] = 0;
+	memory.numberArray = 0;
 	for (int j = 0; j < (memory.end_index-memory.start_index); j++)
 	{    
 		if(nonInt((int)memory.input[memory.start_index+j] - '0'))
 			break;
 		
-		memory.numberArray[memory.index] += ((int)memory.input[memory.start_index+j] - '0')*(pow(10,((memory.end_index-memory.start_index)-(j+1))));
+		memory.numberArray += ((int)memory.input[memory.start_index+j] - '0')*(pow(10,((memory.end_index-memory.start_index)-(j+1))));
 	}
 }
 
@@ -30,7 +30,7 @@ bool nonInt(int temp)
 	if(temp >= 0 && temp <= 9)
 		return false;
 	cout << "NONE INT FOUND" << endl;
-	memory.numberArray[memory.index] = 0;
+	memory.numberArray = 0;
 	return true;
 
 }
@@ -40,24 +40,24 @@ void sign()
 	switch (memory.lastSign)
 		{
 		case '+':
-			memory.total = (memory.total + memory.numberArray[memory.index]); 
+			memory.total = (memory.total + memory.numberArray); 
 			cout << "kolla: " << memory.total << endl;
 			break;
 		case '-':
-			memory.total = (memory.total - memory.numberArray[memory.index]); 
+			memory.total = (memory.total - memory.numberArray); 
 			cout << "kolla: " << memory.total << endl;
 			break;
 		case '*':
-			memory.total = (memory.total * memory.numberArray[memory.index]); 
+			memory.total = (memory.total * memory.numberArray); 
 			cout << "kolla: " << memory.total << endl;
 			break;
 		case '/':
-			memory.total = (memory.total / memory.numberArray[memory.index]); 
+			memory.total = (memory.total / memory.numberArray); 
 			cout << "kolla: " << memory.total << endl;
 			break;
 		
 		default:
-			memory.total = memory.numberArray[memory.index];
+			memory.total = memory.numberArray;
 			cout << "kolla: " << memory.total << endl;
 			break;
 		}
@@ -100,10 +100,6 @@ int main()
 		
 		
 		cout << "Input: " << memory.input << endl;
-		for (int i = 0; i < memory.index+1; i++)
-		{
-			cout << "Output array: "<< memory.numberArray[i] << endl;
-		}
 		
 		cout << "Total: " << memory.total << endl;
 		reset();
