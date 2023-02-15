@@ -26,6 +26,7 @@ void indexNumbers();
 void int_to_string(string temp);
 bool nonInt(int temp);
 void sign();
+void reset();
 
 
 #endif
