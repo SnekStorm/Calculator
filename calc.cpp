@@ -1,6 +1,15 @@
 #include "storage.hpp"
 using namespace std;
 
+class myClass
+{
+private:
+	struct eeprom memory;
+public:
+	
+
+
+
 
 void reset()
 {
@@ -77,9 +86,9 @@ void decypher()
 	}
 }
 
-int main()
+void theLoop()
 {
-	while (true)
+while (true)
 	{
 		cout << "Enter formula: ";
 		cin >> memory.input;
@@ -90,6 +99,15 @@ int main()
 		cout << "Total: " << memory.total << endl;
 		reset();
 	}
-	return 0;
-
 }
+
+};
+
+// int main()
+// {
+// 	myClass call;
+// 	call.theLoop();
+// 	return 0;
+
+// }
+

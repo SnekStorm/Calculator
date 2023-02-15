@@ -1,6 +1,7 @@
 #ifndef HEADER_FILE_NAME
 #define HEADER_FILE_NAME
 
+#pragma once
 // Includes
 #include <iostream>
 #include <string>
@@ -8,7 +9,7 @@
 using namespace std;
 
 // Structs
-struct 
+struct eeprom
 {  
    string input;
    int numberArray = 0;
@@ -17,7 +18,7 @@ struct
    double total = 0;
    int lastSign;
 
-}memory;
+};
    
 
 // Tasks
