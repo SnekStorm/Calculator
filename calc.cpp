@@ -3,7 +3,6 @@ using namespace std;
 void reset()
 {
 	memory.total = 0;
-	memory.index = 0;
 	memory.start_index = 0;
 	memory.end_index = 0;
 	memory.input = "";
@@ -26,11 +25,9 @@ void indexNumbers()
 // Finds none Ints, if found delete that segment
 bool nonInt(int temp)
 {
-	//cout << temp << endl;
 	if(temp >= 0 && temp <= 9)
 		return false;
 	cout << "NONE INT FOUND" << endl;
-	memory.numberArray = 0;
 	return true;
 
 }
@@ -68,9 +65,6 @@ int main()
 {
 	while (true)
 	{
-			
-		
-		
 		cout << "Enter formula: ";
 		cin >> memory.input;
 
@@ -86,18 +80,14 @@ int main()
 				
 				sign();
 
-				//cout << "START: "<< start_index << "  END: " << end_index << endl;
+				
 				memory.start_index = memory.end_index+1;
-				memory.index++;
+				
 				memory.lastSign = memory.input[i];
 			}  
-			cout << "I: " << i << " II: " << (int)memory.input[i] << endl;  
+			//cout << "I: " << i << " II: " << (int)memory.input[i] << endl;  
 		}
-
-		//indexNumbers();
-		//sign();
-
-		
+	
 		
 		cout << "Input: " << memory.input << endl;
 		
