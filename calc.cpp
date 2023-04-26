@@ -1,17 +1,7 @@
 #include "storage.hpp"
 using namespace std;
 
-class myClass
-{
-private:
-	struct eeprom memory;
-public:
-	
-
-
-
-
-void reset()
+void myClass::reset()
 {
 	memory.total = 0;
 	memory.start_index = 0;
@@ -20,7 +10,7 @@ void reset()
 }
 
 // Index the input, between the seperators
-void indexNumbers()
+void myClass::indexNumbers()
 {
 	memory.numberArray = 0;
 	for (int j = 0; j < (memory.end_index-memory.start_index); j++)
@@ -33,7 +23,7 @@ void indexNumbers()
 }
 
 // Finds none Ints, if found delete that segment
-bool nonInt(int temp)
+bool myClass::nonInt(int temp)
 {
 	if(temp >= 0 && temp <= 9)
 		return false;
@@ -42,7 +32,7 @@ bool nonInt(int temp)
 
 }
 
-void sign()
+void myClass::sign()
 {
 	switch (memory.lastSign)
 		{
@@ -71,7 +61,7 @@ void sign()
 
 }
 
-void decypher()
+void myClass::decypher()
 {
 	for ( memory.end_index = 0; memory.end_index < size(memory.input)+1; memory.end_index++)
 	{					
@@ -86,22 +76,8 @@ void decypher()
 	}
 }
 
-void theLoop()
-{
-while (true)
-	{
-		cout << "Enter formula: ";
-		cin >> memory.input;
 
-		if(memory.input == "exit") {break;}
-		decypher();
-		
-		cout << "Total: " << memory.total << endl;
-		reset();
-	}
-}
-
-bool input()
+bool myClass::input()
 {
 	cin >> memory.input;
 
@@ -112,19 +88,6 @@ bool input()
 	return true;
 }
 
-void PrintTotal()
-{
-	cout << "Total: " << memory.total << endl;
 
-}
 
-};
-
-// int main()
-// {
-// 	myClass call;
-// 	call.theLoop();
-// 	return 0;
-
-// }
 

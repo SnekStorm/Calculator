@@ -8,7 +8,6 @@
 #include <cmath>
 using namespace std;
 
-
 // Structs
 struct eeprom
 {  
@@ -20,15 +19,26 @@ struct eeprom
    int lastSign;
 
 };
-   
-void super();
+
+class myClass
+{
+private:
+   struct eeprom memory;
+
+public:
+   void reset();
+   void indexNumbers();
+   bool nonInt(int temp);
+   void sign();
+   void decypher();
+   bool input();
+   void PrintTotal();
+}MathClass;
+
 // Tasks
-void indexNumbers();
-bool nonInt(int temp);
-void sign();
-void reset();
-bool input();
-void PrintTotal();
+void super();
+
+
 
 
 #endif

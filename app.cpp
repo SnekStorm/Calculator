@@ -5,19 +5,13 @@ using namespace std;
 
 int main()
 {
-    
-
-    //call.theLoop();
-
     super();
 
     return 0;
-
 }
 
 void super()
 {
-    myClass MathClass;
     cout << "Enter Formula: ";
     while (MathClass.input())
     {
