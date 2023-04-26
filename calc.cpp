@@ -101,6 +101,23 @@ while (true)
 	}
 }
 
+bool input()
+{
+	cin >> memory.input;
+
+	if(memory.input == "exit")
+	{
+		return false;
+	}
+	return true;
+}
+
+void PrintTotal()
+{
+	cout << "Total: " << memory.total << endl;
+
+}
+
 };
 
 // int main()

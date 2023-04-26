@@ -8,6 +8,7 @@
 #include <cmath>
 using namespace std;
 
+
 // Structs
 struct eeprom
 {  
@@ -20,12 +21,14 @@ struct eeprom
 
 };
    
-
+void super();
 // Tasks
 void indexNumbers();
 bool nonInt(int temp);
 void sign();
 void reset();
+bool input();
+void PrintTotal();
 
 
 #endif
